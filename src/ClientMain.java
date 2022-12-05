@@ -74,7 +74,6 @@ public class ClientMain {
                 if (ans.compareTo("USCITA") == 0){
                     sk.close();
                     clm.done = true;
-
                     break;
                 }
                 else if (ans.compareTo("stampa") == 0){
@@ -95,6 +94,7 @@ public class ClientMain {
             }
 
         }
-
+        System.out.println("esco");
+        clm.ms.close();
     }
 }

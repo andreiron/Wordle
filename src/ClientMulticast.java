@@ -31,13 +31,14 @@ public class ClientMulticast implements Runnable{
         }
 
         while (!done){
+            System.out.println("multicast");
             byte[] buffer = new byte[50];
             DatagramPacket pk = new DatagramPacket(buffer,50);
             try {
                 ms.receive(pk);
                 System.out.println("");
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("multicast chiuso");
             }
             String s = new String(pk.getData(), StandardCharsets.UTF_8);
             String ret = s.substring(0,s.indexOf(s.charAt(49)));

@@ -4,6 +4,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.Objects;
 
+
 public class Play implements Runnable{
 
     public String SW;
@@ -71,7 +72,10 @@ public class Play implements Runnable{
 
 
             if (GW.equals(SW)) {
-                results = results.concat(SW);
+                String[] r  = new String[10];
+                Arrays.fill(r, "O" );
+                String right = String.format("%0" + 10 + "d", 0).replace('0', 'O');
+                results = results.concat( Arrays.deepToString(r));
                 utente.win++;
                 utente.winStreak++;
                 utente.maxStreak = Math.max(utente.maxStreak, utente.winStreak);
@@ -86,7 +90,7 @@ public class Play implements Runnable{
 
             for (int i = 0; i < GWLetters.length; i++) {
                 if ( SWLetters[i].compareTo(GWLetters[i]) == 0) {
-                    ret[i] = GWLetters[i];
+                    ret[i] = "O";
                     check[i] = true;
                 }
             }

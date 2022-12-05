@@ -1,0 +1,6 @@
+port:8080
+address:127.0.0.1
+multicast_port:4321
+multicast_address:230.0.0.0
+wordtimer:60000
+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

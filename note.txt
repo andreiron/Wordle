@@ -1,0 +1,22 @@
+------leggi informazioni da file di config
+
+register
+    ok
+login
+    ok
+logout
+    --------fine tentativo
+play
+    --------controllo se giocatore ha già giocato
+    --------statistiche
+send
+send
+    --------conta tentativi
+    legenda indizi
+send stat
+    --------tutto
+share
+    controllo più client
+    in messaggio includi utente che invia messaggio
+show share
+    io non vedo mie notifiche
