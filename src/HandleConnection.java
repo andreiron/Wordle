@@ -4,10 +4,8 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class HandleConnection implements Runnable{
 
@@ -18,11 +16,11 @@ public class HandleConnection implements Runnable{
     public int multicastport;
     public String multicastaddress;
     public File f;
-    public String w;
+    public Word w;
 
     public final ExecutorService exec;
 
-    public HandleConnection(ConcurrentHashMap<String, Utente> utenti, int port , String address, int multicastport, String multicastaddress, ExecutorService exec, File f, Word w ){
+    public HandleConnection(ConcurrentHashMap<String, Utente> utenti, int port , String address, int multicastport, String multicastaddress, ExecutorService exec, File f, Word h ){
         this.utenti = utenti;
         this.port = port;
         this.address = address;
@@ -30,7 +28,7 @@ public class HandleConnection implements Runnable{
         this.multicastaddress = multicastaddress;
         this.exec = exec;
         this.f = f;
-        this.w = w.getW();
+        this.w = h;
     }
     @Override
     public void run() {
@@ -48,12 +46,10 @@ public class HandleConnection implements Runnable{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        HandleTime.s = serverSocket;
         while (done){
             Socket cl = new Socket();
             try{
                 cl = serverSocket.accept();
-                cl.setSoTimeout(20*1000);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -61,9 +57,9 @@ public class HandleConnection implements Runnable{
 
             try {
                 if (cl.isBound()) {
-                    System.out.println("SERVER CONNESSO: " + cl.getPort());
+                    System.out.println("SERVER CONNESSO: " + cl.getPort() + "\nword: " + w.getW());
                 }
-                exec.submit(new Game(cl,utenti,w,multicastaddress,multicastport, f));
+                exec.submit(new Game(cl,utenti,w.getW(),multicastaddress,multicastport, f));
             } catch (IOException e) {
                 throw new RuntimeException(e);
                 }

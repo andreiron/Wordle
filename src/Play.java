@@ -30,13 +30,16 @@ public class Play implements Runnable{
 
     @Override
     public void run() {
-        String[] SWLetters = SW.split("");
+
         try {
-            out.write("_ _ _ _ _ _ _ _ _ _\n");
+            out.write("inizio\n");
             out.flush();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        String[] SWLetters = SW.split("");
 
         int rounds = 0;
         String results = "";
@@ -66,7 +69,7 @@ public class Play implements Runnable{
             }
             System.out.println(GW);
             String[] GWLetters = GW.split("");
-
+            System.out.println(Arrays.toString(GWLetters));
             boolean[] check = new boolean[10];
             Arrays.fill(check, false);
 
@@ -116,9 +119,10 @@ public class Play implements Runnable{
             rounds++;
         }
         if (rounds <= 12){
-            utente.guessDistribution = (((utente.guessDistribution*utente.win)-1)+rounds) / utente.win;
+            utente.guessDistribution = ((utente.guessDistribution*utente.win)+rounds) / utente.win;
+
         }
-        System.out.println(results);
         utente.setResults(results);
+        System.out.println(results);
     }
 }

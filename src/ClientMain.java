@@ -81,6 +81,10 @@ public class ClientMain {
                         System.out.println("RICEVUTO: " + e);
                     });
                 }
+                else if (ans.compareTo("inizio") == 0){
+                    System.out.printf( "'_' : lettera non presente nella parola\n'X' : lettera presente nella parola ma " +
+                            "in una poszione diversa\n'O' : lettera presente nella parola nella posizione corretta\n_ _ _ _ _ _ _ _ _ _");
+                }
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }

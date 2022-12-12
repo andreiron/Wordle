@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public abstract class ServerMain {
+public class ServerMain {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         int port = 0;

@@ -70,10 +70,11 @@ public class Game implements Runnable{
     public void share() throws IOException {
         DatagramSocket socket = new DatagramSocket();
         InetAddress group = InetAddress.getByName(multicastaddress);
-        String cp = utente.getResults();
+        String cp = utente.username.concat("!").concat(utente.getResults());
         String[] res = cp.split("!");
         int i = 0;
         while (res.length > 0){
+            System.out.println(res[0]);
             byte[] msg =  Arrays.asList(res).get(0).getBytes();
             System.out.println("CLIENT: " + Arrays.toString(msg));
             DatagramPacket packet = new DatagramPacket(msg, msg.length,
